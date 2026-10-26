@@ -1,0 +1,38 @@
+{
+  "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui",
+    "browser"
+  ],
+  "orientation": "any",
+  "id": "./",
+  "name": "DERMAÉ — Personalized Skincare & Aesthetics",
+  "short_name": "DERMAÉ",
+  "description": "DERMAÉ — personalized skincare and aesthetic treatments designed around your individual goals and skin needs.",
+  "start_url": "./",
+  "scope": "./",
+  "background_color": "#185844",
+  "theme_color": "#185844",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "generator": "builder.puter.com"
+}
