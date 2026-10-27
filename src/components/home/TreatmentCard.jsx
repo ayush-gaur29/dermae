@@ -33,7 +33,7 @@ export function TreatmentCard({ item, index = 0 }) {
   const v = VARIANTS[item.variant] || VARIANTS.ivory;
   return (
     <article
-      className={`reveal lux-card group relative flex h-full flex-col overflow-hidden rounded-card p-2.5 ${v.card}`}
+      className={`reveal lux-card popup-hover group relative flex h-full flex-col overflow-hidden rounded-card p-2.5 ${v.card}`}
       style={{ '--d': `${index * 90}ms` }}
     >
       <div className="relative aspect-[4/3] overflow-hidden rounded-[1.35rem]">
@@ -41,7 +41,7 @@ export function TreatmentCard({ item, index = 0 }) {
           src={item.image}
           alt={item.imageAlt}
           loading="lazy"
-          className="zoom-img h-full w-full object-cover"
+          className="popup-img h-full w-full object-cover transition-transform duration-700 ease-lux"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-forest/30 to-transparent"></div>
         <span
@@ -53,21 +53,21 @@ export function TreatmentCard({ item, index = 0 }) {
       <div className="relative flex flex-1 flex-col px-3 pb-3 pt-6">
         <h3 className={`t-h3 font-serif font-medium ${v.title}`}>{item.title}</h3>
         <p className={`mt-3 text-sm leading-relaxed ${v.text}`}>{item.description}</p>
-        <div className="mt-auto flex items-center justify-between pt-7">
-          <Link
-            to={`/treatments/${item.slug}`}
-            className={`text-[0.8rem] font-medium tracking-wide after:absolute after:inset-0 after:content-[''] ${v.link}`}
-            aria-label={`View details about ${item.title}`}
-          >
+        <Link
+          to={`/treatments/${item.slug}`}
+          className="mt-auto flex items-center justify-between pt-7 group/link cursor-pointer"
+          aria-label={`View details about ${item.title}`}
+        >
+          <span className={`text-[0.8rem] font-medium tracking-wide transition-colors ${v.link}`}>
             Discover Details
-          </Link>
+          </span>
           <span
-            className={`arrow-chip flex h-10 w-10 items-center justify-center rounded-full transition-colors duration-500 ${v.chip}`}
+            className={`arrow-chip flex h-10 w-10 items-center justify-center rounded-full transition-all duration-500 ${v.chip}`}
             aria-hidden="true"
           >
-            <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
+            <ArrowUpRight className="h-4 w-4 pointer-events-none" strokeWidth={1.5} />
           </span>
-        </div>
+        </Link>
       </div>
     </article>
   );

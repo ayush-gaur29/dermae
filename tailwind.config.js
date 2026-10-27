@@ -8,11 +8,11 @@ export default {
     extend: {
       colors: {
         ivory: {
-          DEFAULT: '#F2EBDD',
-          50: '#FAF7F0',
-          100: '#F6F1E7',
-          200: '#F2EBDD',
-          300: '#E7DCC6',
+          DEFAULT: '#FCFAF5',
+          50: '#FFFFFF',
+          100: '#FCFAF5',
+          200: '#F7F3EB',
+          300: '#EFE7DA',
         },
         emerald: {
           DEFAULT: '#185844',

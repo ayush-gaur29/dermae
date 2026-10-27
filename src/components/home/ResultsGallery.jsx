@@ -1,7 +1,8 @@
 import React from 'react';
-import { Info } from 'lucide-react';
+import { Info, ArrowRight } from 'lucide-react';
 import { gallery } from '../../data/gallery.js';
 import { Container, SectionHeading } from '../ui/primitives.jsx';
+import { Link } from '../../router/index.jsx';
 
 const SPAN = {
   tall: 'col-span-2 row-span-2 md:col-span-1 md:row-span-2',
@@ -64,6 +65,16 @@ export function ResultsGallery({ items = gallery }) {
           {items.map((g, i) => (
             <GalleryItem key={g.id} item={g} index={i} />
           ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <Link
+            to="/before-after"
+            className="inline-flex items-center gap-2 rounded-full border border-ivory/25 bg-ivory/10 px-6 py-3 text-xs sm:text-sm font-medium text-ivory backdrop-blur-sm transition-all duration-300 hover:border-gold-light hover:bg-ivory hover:text-forest shadow-sm"
+          >
+            <span>Explore Documented Before &amp; After Outcomes</span>
+            <ArrowRight className="h-4 w-4 text-gold-light group-hover:text-forest" />
+          </Link>
         </div>
       </Container>
     </section>

@@ -5,7 +5,7 @@ import { Container, Button, Eyebrow } from '../ui/primitives.jsx';
 
 export function HeroSection() {
   return (
-    <section id="home" className="relative overflow-hidden pb-20 pt-12 sm:pb-24 sm:pt-16 lg:pb-28 lg:pt-20">
+    <section id="home" className="relative overflow-hidden pb-20 pt-6 sm:pb-24 sm:pt-14 lg:pb-28 lg:pt-20">
       {/* ambient field */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="absolute inset-x-0 top-0 h-full bg-[radial-gradient(ellipse_at_80%_20%,rgba(120,148,126,0.22),transparent_60%)]"></div>

@@ -8,6 +8,7 @@ import { Footer } from './components/layout/Footer.jsx';
 import HomePage from './pages/HomePage.jsx';
 import TreatmentsPage from './pages/TreatmentsPage.jsx';
 import TreatmentDetailPage from './pages/TreatmentDetailPage.jsx';
+import BeforeAfterPage from './pages/BeforeAfterPage.jsx';
 import AboutPage from './pages/AboutPage.jsx';
 import BookConsultationPage from './pages/BookConsultationPage.jsx';
 
@@ -26,6 +27,7 @@ function AppContent() {
           <Route path="/" element={<HomePage />} />
           <Route path="/treatments" element={<TreatmentsPage />} />
           <Route path="/treatments/:slug" element={<TreatmentDetailPage />} />
+          <Route path="/before-after" element={<BeforeAfterPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/book-consultation" element={<BookConsultationPage />} />
           {/* Fallback to Home */}

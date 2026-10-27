@@ -2,6 +2,7 @@ import heroImg from '../assets/hero.jpg';
 import clinicImg from '../assets/clinic.jpg';
 import serumImg from '../assets/serum.jpg';
 import facialImg from '../assets/facial.jpg';
+import treatmentsHeroImg from '../assets/treatments-hero.jpg';
 import officialLogo from '../assets/dermae-official-logo.png';
 import officialLogoLight from '../assets/dermae-official-logo-light.png';
 
@@ -24,7 +25,8 @@ export const images = {
   hero: heroImg,
   clinic: clinicImg,
   serum: serumImg,
-  facial: facialImg
+  facial: facialImg,
+  treatmentsHero: treatmentsHeroImg
 };
 
 export const announcement = {

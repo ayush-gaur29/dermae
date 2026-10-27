@@ -62,7 +62,7 @@ export default function TreatmentDetailPage() {
         {/* Hero Detail Grid */}
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-14 items-center">
           {/* Left Column: Visual Showcase */}
-          <div className="lg:col-span-5 relative">
+          <div className="lg:col-span-5 relative mb-10 lg:mb-0">
             <div className="relative mx-auto max-w-md lg:max-w-none">
               <div className="aspect-[4/5] overflow-hidden rounded-t-[999px] rounded-b-panel border border-gold/40 shadow-xl bg-sage-pale">
                 <img
@@ -183,7 +183,13 @@ export default function TreatmentDetailPage() {
                 {treatment.recommendedCadence || 'Schedule your personalized consultation with our clinical specialists.'}
               </p>
             </div>
-            <div className="shrink-0">
+            <div className="shrink-0 flex flex-wrap items-center gap-3">
+              <Link
+                to="/before-after"
+                className="inline-flex items-center justify-center rounded-full border border-ivory/25 px-5 py-2.5 text-xs font-semibold text-ivory hover:bg-ivory/10 hover:border-ivory/50 transition"
+              >
+                View Before &amp; After
+              </Link>
               <Button to="/book-consultation" variant="ivory">
                 Book Consultation
               </Button>

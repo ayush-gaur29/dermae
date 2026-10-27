@@ -14,6 +14,7 @@ export function Navbar() {
   const getActiveId = () => {
     if (pathname === '/') return 'home';
     if (pathname.startsWith('/treatments')) return 'treatments';
+    if (pathname.startsWith('/before-after')) return 'before-after';
     if (pathname.startsWith('/about')) return 'about';
     if (pathname.startsWith('/book-consultation')) return 'contact';
     return '';
@@ -42,57 +43,62 @@ export function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-40 px-3 pt-3 sm:px-5">
-      <nav
-        aria-label="Main"
-        className={`nav-surface relative mx-auto flex max-w-shell items-center justify-between rounded-full py-2 pl-5 pr-2 sm:pl-6 ${
-          scrolled || open ? 'is-scrolled' : ''
-        }`}
-      >
-        <Link to="/" className="flex shrink-0 items-center" aria-label="DERMAÉ home">
-          <Logo />
-        </Link>
+    <header className="sticky top-0 z-50 px-3 pt-2.5 sm:px-5">
+      <div className="relative mx-auto max-w-shell">
+        <nav
+          aria-label="Main"
+          className={`nav-surface relative flex items-center justify-between rounded-full py-2 px-4 sm:px-6 transition-all duration-300 ${
+            scrolled ? 'is-scrolled' : ''
+          }`}
+        >
+          <Link to="/" className="flex shrink-0 items-center" aria-label="DERMAÉ home">
+            <Logo className="h-8 w-auto sm:h-9" />
+          </Link>
 
-        <ul className="hidden items-center gap-9 lg:flex">
-          {mainNav.map((item) => {
-            const isItemActive = active === item.id;
-            return (
-              <li key={item.id}>
-                <Link
-                  to={item.href}
-                  aria-current={isItemActive ? 'page' : undefined}
-                  className={`nav-link text-[0.85rem] font-medium tracking-wide ${
-                    isItemActive ? 'text-emerald' : 'text-forest/75 hover:text-forest'
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+          <ul className="hidden items-center gap-2 lg:flex">
+            {mainNav.map((item) => {
+              const isItemActive = active === item.id;
+              return (
+                <li key={item.id}>
+                  <Link
+                    to={item.href}
+                    aria-current={isItemActive ? 'page' : undefined}
+                    className={`inline-flex items-center justify-center rounded-full px-4 py-1.5 text-[0.84rem] tracking-wide transition-all duration-200 ${
+                      isItemActive
+                        ? 'border border-forest/40 bg-forest/[0.05] text-forest font-semibold shadow-sm ring-1 ring-forest/20'
+                        : 'border border-transparent text-forest/75 font-medium hover:text-forest hover:border-forest/20 hover:bg-forest/[0.02]'
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
 
-        <div className="flex items-center gap-2">
-          <Button to={navCta.href} className="hidden !min-h-[44px] !px-5 sm:inline-flex">
-            {navCta.label}
-          </Button>
-          <button
-            ref={burgerRef}
-            type="button"
-            className="burger flex h-11 w-11 flex-col items-center justify-center gap-1 rounded-full border border-forest/10 bg-ivory-50/70 text-forest transition-colors hover:border-gold/50 lg:hidden"
-            aria-expanded={open}
-            aria-controls="mobile-menu"
-            aria-label={open ? 'Close menu' : 'Open menu'}
-            onClick={() => setOpen((o) => !o)}
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-        </div>
+          <div className="flex items-center gap-2.5">
+            <Button to={navCta.href} className="!hidden md:!inline-flex !min-h-[42px] !px-5 text-xs">
+              {navCta.label}
+            </Button>
+            <button
+              ref={burgerRef}
+              type="button"
+              className="burger flex h-10 w-10 sm:h-11 sm:w-11 flex-col items-center justify-center gap-1.5 rounded-full border border-forest/15 bg-white/70 text-forest shadow-sm transition-all duration-200 hover:border-gold/50 active:scale-95 lg:hidden"
+              aria-expanded={open}
+              aria-controls="mobile-menu"
+              aria-label={open ? 'Close menu' : 'Open menu'}
+              onClick={() => setOpen((o) => !o)}
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </nav>
 
+        {/* Mobile dropdown panel positioned cleanly below navbar pill */}
         <MobileMenu open={open} onClose={close} active={active} />
-      </nav>
+      </div>
     </header>
   );
 }

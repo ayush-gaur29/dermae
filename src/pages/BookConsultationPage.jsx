@@ -12,10 +12,14 @@ import {
   ShieldCheck, 
   HeartHandshake, 
   HelpCircle,
-  MapPin
+  MapPin,
+  Lock,
+  MessageSquare,
+  Check,
+  ChevronRight
 } from 'lucide-react';
 import { treatments } from '../data/treatments.js';
-import { brand } from '../data/brandContent.js';
+import { brand, images } from '../data/brandContent.js';
 import { Container, Eyebrow, Button } from '../components/ui/primitives.jsx';
 import { Link, useLocation } from '../router/index.jsx';
 
@@ -152,55 +156,72 @@ export default function BookConsultationPage() {
   };
 
   return (
-    <div className="min-h-screen bg-ivory">
-      {/* Header Banner */}
-      <section className="relative overflow-hidden border-b border-emerald/10 bg-gradient-to-b from-ivory-50 via-sage-pale/30 to-ivory py-16 sm:py-24">
-        <div className="orb orb-sage left-[-5%] top-[-10%] h-80 w-80 opacity-50" aria-hidden="true" />
-        <div className="orb orb-gold right-[-5%] top-10 h-72 w-72 opacity-40" aria-hidden="true" />
+    <div className="relative min-h-screen overflow-hidden bg-ivory">
+      {/* Ambient background glows */}
+      <div className="orb orb-sage -left-40 top-12 h-96 w-96 opacity-50" aria-hidden="true" />
+      <div className="orb orb-emerald -right-36 top-1/3 h-80 w-80 opacity-30" aria-hidden="true" />
+      <div className="orb orb-gold -left-20 bottom-1/4 h-72 w-72 opacity-25" aria-hidden="true" />
 
+      {/* Header Banner */}
+      <section className="relative pt-8 pb-12 sm:pt-12 sm:pb-16 border-b border-forest/[0.06]">
         <Container className="relative">
           <nav className="mb-6 flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-sage" aria-label="Breadcrumb">
             <Link to="/" className="transition hover:text-emerald">Home</Link>
             <span>/</span>
-            <span className="text-forest">Book a Consultation</span>
+            <span className="text-forest font-semibold">Book a Consultation</span>
           </nav>
 
-          <div className="max-w-2xl">
-            <Eyebrow>Bespoke Skin Journey</Eyebrow>
-            <h1 className="mt-4 font-serif text-4xl font-medium tracking-tight text-forest sm:text-5xl">
-              Book Your Private Consultation
+          <div className="max-w-3xl animate-hero-slide-left">
+            <Eyebrow tone="emerald">Private Consultations</Eyebrow>
+            <h1 className="t-display mt-4 font-serif font-medium text-forest">
+              Let’s Design Your Skin Pathway <em className="italic text-emerald">Together.</em>
             </h1>
-            <p className="mt-4 text-base leading-relaxed text-ink/80 sm:text-lg">
-              Begin your skin journey with a relaxed, 45-minute one-on-one consultation. We listen to your goals, examine your skin’s biological profile, and curate a customized treatment plan without sales pressure.
+            <p className="mt-5 text-base sm:text-lg leading-relaxed text-ink font-light max-w-2xl">
+              Begin your journey with an unhurried, 45-minute one-on-one consultation. We listen to your goals, examine your skin’s biological profile, and curate a customized treatment plan without sales pressure.
             </p>
+
+            {/* Reassurance Badges */}
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <span className="inline-flex items-center gap-2 rounded-full border border-forest/15 bg-white/70 px-4 py-2 text-xs font-medium text-forest shadow-sm backdrop-blur-sm">
+                <span className="gold-dot" aria-hidden="true" />
+                45-Minute In-Depth Diagnostic
+              </span>
+              <span className="inline-flex items-center gap-2 rounded-full border border-forest/15 bg-white/70 px-4 py-2 text-xs font-medium text-forest shadow-sm backdrop-blur-sm">
+                <span className="gold-dot" aria-hidden="true" />
+                Strictly Zero Sales Pressure
+              </span>
+              <span className="inline-flex items-center gap-2 rounded-full border border-forest/15 bg-white/70 px-4 py-2 text-xs font-medium text-forest shadow-sm backdrop-blur-sm">
+                <span className="gold-dot" aria-hidden="true" />
+                100% Confidential Care
+              </span>
+            </div>
           </div>
         </Container>
       </section>
 
       {/* Main Form & Information Section */}
-      <section className="relative py-16 sm:py-24">
+      <section className="relative py-12 sm:py-20">
         <Container>
-          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-12 items-start">
             
             {/* Form Column */}
             <div className="lg:col-span-7">
               <div 
-                className="rounded-3xl border border-emerald/15 bg-ivory-50/90 p-6 sm:p-10 shadow-lg backdrop-blur-sm"
-                style={{ boxShadow: 'var(--shadow-ambient)' }}
+                className="rounded-[2rem] border border-forest/[0.08] bg-white/85 p-6 sm:p-10 shadow-[0_20px_50px_-20px_rgba(16,47,39,0.12)] backdrop-blur-md relative overflow-hidden"
               >
                 {status === 'success' ? (
                   /* Success State */
                   <div className="py-8 text-center sm:py-12" role="status" aria-live="polite">
-                    <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald text-ivory shadow-md">
-                      <CheckCircle2 className="h-8 w-8" strokeWidth={2} />
+                    <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-emerald text-ivory shadow-lg ring-8 ring-emerald/10">
+                      <CheckCircle2 className="h-10 w-10" strokeWidth={2} />
                     </div>
-                    <span className="mt-6 inline-block rounded-full border border-emerald/20 bg-emerald/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-emerald">
+                    <span className="mt-6 inline-block rounded-full border border-emerald/20 bg-emerald/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-emerald">
                       Request Received
                     </span>
-                    <h2 className="mt-3 font-serif text-2xl font-medium text-forest sm:text-3xl">
+                    <h2 className="mt-3 font-serif text-3xl font-medium text-forest sm:text-4xl">
                       Thank You, {formData.fullName || 'Valued Client'}
                     </h2>
-                    <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-ink/80">
+                    <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-ink">
                       {serverMessage}
                     </p>
 
@@ -217,7 +238,7 @@ export default function BookConsultationPage() {
                       </Button>
                       <Link
                         to="/treatments"
-                        className="inline-flex items-center justify-center rounded-full bg-emerald px-6 py-3 text-sm font-medium text-ivory transition hover:bg-forest"
+                        className="inline-flex items-center justify-center rounded-full bg-emerald px-6 py-3 text-sm font-medium text-ivory transition hover:bg-forest shadow-md hover:shadow-lg"
                       >
                         Browse Treatments
                       </Link>
@@ -226,13 +247,19 @@ export default function BookConsultationPage() {
                 ) : (
                   /* Booking Form */
                   <form onSubmit={handleSubmit} noValidate aria-label="Book a consultation form">
-                    <div className="border-b border-emerald/10 pb-6">
-                      <h2 className="font-serif text-2xl font-medium text-forest sm:text-3xl">
-                        Consultation Details
-                      </h2>
-                      <p className="mt-2 text-sm text-ink/70">
-                        Please provide your contact details and treatment interests. All initial assessments are conducted in a quiet, confidential setting.
-                      </p>
+                    <div className="flex flex-wrap items-center justify-between gap-4 border-b border-forest/[0.08] pb-6">
+                      <div>
+                        <span className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">Reservation Request</span>
+                        <h2 className="mt-1 font-serif text-2xl sm:text-3xl font-medium text-forest">
+                          Consultation Details
+                        </h2>
+                        <p className="mt-1.5 text-xs sm:text-sm text-ink font-light">
+                          Provide your details below. All appointments are held in a quiet, confidential setting.
+                        </p>
+                      </div>
+                      <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald/20 bg-emerald/[0.06] px-3.5 py-1.5 text-[0.72rem] font-medium text-emerald">
+                        <Clock className="h-3.5 w-3.5" /> 45 Min Session
+                      </span>
                     </div>
 
                     {status === 'error' && (
@@ -261,8 +288,8 @@ export default function BookConsultationPage() {
                           value={formData.fullName}
                           onChange={handleChange}
                           placeholder="e.g. Eleanor Vance"
-                          className={`mt-2 w-full rounded-xl border bg-ivory/60 px-4 py-3 text-sm text-forest placeholder-ink/40 transition focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald ${
-                            errors.fullName ? 'border-red-400 ring-1 ring-red-400' : 'border-emerald/15 hover:border-emerald/30'
+                          className={`mt-2 w-full rounded-xl border bg-ivory/50 hover:bg-white px-4 py-3.5 text-sm text-forest placeholder-ink/40 transition focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald/20 ${
+                            errors.fullName ? 'border-red-400 ring-1 ring-red-400' : 'border-forest/15 hover:border-forest/30 focus:border-emerald'
                           }`}
                         />
                         {errors.fullName && <p className="mt-1.5 text-xs text-red-600">{errors.fullName}</p>}
@@ -285,8 +312,8 @@ export default function BookConsultationPage() {
                             value={formData.email}
                             onChange={handleChange}
                             placeholder="eleanor@example.com"
-                            className={`mt-2 w-full rounded-xl border bg-ivory/60 px-4 py-3 text-sm text-forest placeholder-ink/40 transition focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald ${
-                              errors.email ? 'border-red-400 ring-1 ring-red-400' : 'border-emerald/15 hover:border-emerald/30'
+                            className={`mt-2 w-full rounded-xl border bg-ivory/50 hover:bg-white px-4 py-3.5 text-sm text-forest placeholder-ink/40 transition focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald/20 ${
+                              errors.email ? 'border-red-400 ring-1 ring-red-400' : 'border-forest/15 hover:border-forest/30 focus:border-emerald'
                             }`}
                           />
                           {errors.email && <p className="mt-1.5 text-xs text-red-600">{errors.email}</p>}
@@ -307,8 +334,8 @@ export default function BookConsultationPage() {
                             value={formData.phone}
                             onChange={handleChange}
                             placeholder="+1 (555) 000-0000"
-                            className={`mt-2 w-full rounded-xl border bg-ivory/60 px-4 py-3 text-sm text-forest placeholder-ink/40 transition focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald ${
-                              errors.phone ? 'border-red-400 ring-1 ring-red-400' : 'border-emerald/15 hover:border-emerald/30'
+                            className={`mt-2 w-full rounded-xl border bg-ivory/50 hover:bg-white px-4 py-3.5 text-sm text-forest placeholder-ink/40 transition focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald/20 ${
+                              errors.phone ? 'border-red-400 ring-1 ring-red-400' : 'border-forest/15 hover:border-forest/30 focus:border-emerald'
                             }`}
                           />
                           {errors.phone && <p className="mt-1.5 text-xs text-red-600">{errors.phone}</p>}
@@ -327,8 +354,8 @@ export default function BookConsultationPage() {
                           name="treatment"
                           value={formData.treatment}
                           onChange={handleChange}
-                          className={`mt-2 w-full rounded-xl border bg-ivory/60 px-4 py-3 text-sm text-forest transition focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald ${
-                            errors.treatment ? 'border-red-400 ring-1 ring-red-400' : 'border-emerald/15 hover:border-emerald/30'
+                          className={`mt-2 w-full rounded-xl border bg-ivory/50 hover:bg-white px-4 py-3.5 text-sm text-forest transition focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald/20 ${
+                            errors.treatment ? 'border-red-400 ring-1 ring-red-400' : 'border-forest/15 hover:border-forest/30 focus:border-emerald'
                           }`}
                         >
                           <option value="skin-consultation">Comprehensive Skin Consultation (45 min) — Recommended First Step</option>
@@ -359,8 +386,8 @@ export default function BookConsultationPage() {
                             required
                             value={formData.preferredDate}
                             onChange={handleChange}
-                            className={`mt-2 w-full rounded-xl border bg-ivory/60 px-4 py-3 text-sm text-forest transition focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald ${
-                              errors.preferredDate ? 'border-red-400 ring-1 ring-red-400' : 'border-emerald/15 hover:border-emerald/30'
+                            className={`mt-2 w-full rounded-xl border bg-ivory/50 hover:bg-white px-4 py-3.5 text-sm text-forest transition focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald/20 ${
+                              errors.preferredDate ? 'border-red-400 ring-1 ring-red-400' : 'border-forest/15 hover:border-forest/30 focus:border-emerald'
                             }`}
                           />
                           {errors.preferredDate && <p className="mt-1.5 text-xs text-red-600">{errors.preferredDate}</p>}
@@ -378,7 +405,7 @@ export default function BookConsultationPage() {
                             name="preferredTime"
                             value={formData.preferredTime}
                             onChange={handleChange}
-                            className="mt-2 w-full rounded-xl border border-emerald/15 bg-ivory/60 px-4 py-3 text-sm text-forest transition hover:border-emerald/30 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald"
+                            className="mt-2 w-full rounded-xl border border-forest/15 hover:border-forest/30 bg-ivory/50 hover:bg-white px-4 py-3.5 text-sm text-forest transition focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald/20 focus:border-emerald"
                           >
                             <option value="morning">Morning (9:00 AM – 12:00 PM)</option>
                             <option value="afternoon">Afternoon (12:00 PM – 4:00 PM)</option>
@@ -390,7 +417,7 @@ export default function BookConsultationPage() {
                       {/* Additional Notes */}
                       <div>
                         <label htmlFor="notes" className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-forest">
-                          <span>Additional Notes or Skin Concerns <span className="text-ink/40 font-normal lowercase">(optional)</span></span>
+                          <span>Additional Notes or Skin Concerns <span className="text-ink/50 font-normal lowercase">(optional)</span></span>
                         </label>
                         <textarea
                           id="notes"
@@ -399,17 +426,17 @@ export default function BookConsultationPage() {
                           value={formData.notes}
                           onChange={handleChange}
                           placeholder="Tell us about specific skin goals, previous treatments, or sensitivities..."
-                          className="mt-2 w-full rounded-xl border border-emerald/15 bg-ivory/60 px-4 py-3 text-sm text-forest placeholder-ink/40 transition hover:border-emerald/30 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald"
+                          className="mt-2 w-full rounded-xl border border-forest/15 hover:border-forest/30 bg-ivory/50 hover:bg-white px-4 py-3.5 text-sm text-forest placeholder-ink/40 transition focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald/20 focus:border-emerald"
                         />
                       </div>
 
                       {/* Concierge Policy Notice */}
-                      <div className="rounded-xl border border-emerald/10 bg-sage-pale/40 p-4 text-xs leading-relaxed text-ink/75">
+                      <div className="rounded-xl border border-forest/10 bg-sage-pale/35 p-4 text-xs leading-relaxed text-ink">
                         <p className="flex items-center gap-1.5 font-medium text-forest">
                           <ShieldCheck className="h-4 w-4 text-emerald" /> Consultation Policy
                         </p>
-                        <p className="mt-1">
-                          Online requests represent appointment reservations. Our clinic team will connect directly with you to finalize your appointment time and provide preliminary consultation guidelines.
+                        <p className="mt-1 text-ink/80">
+                          Online requests represent appointment reservations. Our clinic concierge will connect directly with you to finalize your exact appointment slot and answer preliminary questions.
                         </p>
                       </div>
 
@@ -418,7 +445,7 @@ export default function BookConsultationPage() {
                         <button
                           type="submit"
                           disabled={status === 'submitting'}
-                          className="group relative inline-flex w-full items-center justify-center rounded-full bg-emerald px-8 py-4 text-sm font-semibold tracking-wide text-ivory shadow-md transition-all duration-300 hover:bg-forest hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-60"
+                          className="group relative inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-emerald-600 via-emerald to-forest px-8 py-4 text-sm font-semibold tracking-wide text-ivory shadow-[0_10px_30px_-10px_rgba(24,88,68,0.5)] transition-all duration-300 hover:shadow-[0_16px_40px_-10px_rgba(24,88,68,0.65)] hover:-translate-y-0.5 active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-60"
                         >
                           {status === 'submitting' ? (
                             <span className="flex items-center gap-2">
@@ -428,6 +455,7 @@ export default function BookConsultationPage() {
                           ) : (
                             <span className="flex items-center gap-2">
                               Request Consultation Appointment
+                              <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                             </span>
                           )}
                         </button>
@@ -439,46 +467,80 @@ export default function BookConsultationPage() {
             </div>
 
             {/* Side Information Column */}
-            <div className="space-y-8 lg:col-span-5">
+            <div className="space-y-6 lg:col-span-5">
+              
+              {/* Featured Clinic Visual Card with popup effect */}
+              <div className="overflow-hidden rounded-[2rem] border border-forest/[0.08] bg-white/80 p-2.5 shadow-[0_16px_40px_-20px_rgba(16,47,39,0.12)] backdrop-blur-md group card-picture-popup popup-hover">
+                <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[1.5rem]">
+                  <img
+                    src={images.clinic}
+                    alt="The serene consultation room at DERMAÉ"
+                    className="popup-img h-full w-full object-cover transition-transform duration-700 ease-lux"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-forest/60 via-forest/20 to-transparent pointer-events-none" />
+                  <span className="absolute top-3 left-3 rounded-full glass px-3.5 py-1 text-[0.68rem] font-medium uppercase tracking-[0.16em] text-forest border border-white/50 backdrop-blur-md">
+                    Private Clinic Suite
+                  </span>
+                  <div className="absolute bottom-3.5 left-3.5 right-3.5 text-ivory">
+                    <p className="font-serif text-base sm:text-lg font-medium leading-snug">A calm space designed for understanding.</p>
+                    <p className="text-xs text-ivory/80 mt-0.5">Tailored assessments with complete comfort and quiet luxury.</p>
+                  </div>
+                </div>
+              </div>
+
               {/* What to expect card */}
-              <div className="rounded-3xl border border-emerald/10 bg-ivory-50/80 p-7 shadow-sm">
-                <span className="text-xs font-semibold uppercase tracking-wider text-gold-dark">The Experience</span>
+              <div className="rounded-[2rem] border border-forest/[0.08] bg-white/85 p-7 shadow-sm backdrop-blur-md">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-semibold uppercase tracking-[0.16em] text-gold">The Consultation Flow</span>
+                  <span className="text-xs font-medium text-emerald bg-emerald/[0.07] px-2.5 py-0.5 rounded-full border border-emerald/15">3 Steps</span>
+                </div>
                 <h3 className="mt-2 font-serif text-2xl font-medium text-forest">What to expect</h3>
                 
-                <ul className="mt-6 space-y-4">
-                  <li className="flex items-start gap-3 text-sm text-ink/80">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald/10 text-emerald">
-                      <HeartHandshake className="h-3.5 w-3.5" />
+                <div className="mt-6 space-y-5">
+                  <div className="flex items-start gap-3.5">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald/10 font-serif text-sm font-semibold text-emerald border border-emerald/20">
+                      01
                     </span>
                     <div>
-                      <strong className="font-semibold text-forest">Listening first:</strong> We review your daily habits, current products, and what you hope to achieve.
+                      <h4 className="text-sm font-semibold text-forest">In-Depth Listening</h4>
+                      <p className="mt-0.5 text-xs leading-relaxed text-ink">
+                        We review your daily rituals, current products, sensitivities, and what you hope to achieve.
+                      </p>
                     </div>
-                  </li>
-                  <li className="flex items-start gap-3 text-sm text-ink/80">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald/10 text-emerald">
-                      <Sparkles className="h-3.5 w-3.5" />
+                  </div>
+
+                  <div className="flex items-start gap-3.5">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald/10 font-serif text-sm font-semibold text-emerald border border-emerald/20">
+                      02
                     </span>
                     <div>
-                      <strong className="font-semibold text-forest">Tactile & visual diagnostic:</strong> Non-invasive skin analysis measuring hydration, tone, and texture.
+                      <h4 className="text-sm font-semibold text-forest">Tactile & Visual Diagnostics</h4>
+                      <p className="mt-0.5 text-xs leading-relaxed text-ink">
+                        Gentle, non-invasive skin analysis measuring hydration, cellular barrier resilience, and vascular tone.
+                      </p>
                     </div>
-                  </li>
-                  <li className="flex items-start gap-3 text-sm text-ink/80">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald/10 text-emerald">
-                      <HelpCircle className="h-3.5 w-3.5" />
+                  </div>
+
+                  <div className="flex items-start gap-3.5">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald/10 font-serif text-sm font-semibold text-emerald border border-emerald/20">
+                      03
                     </span>
                     <div>
-                      <strong className="font-semibold text-forest">Honest, pressure-free advice:</strong> You receive a clear, personalized recommendation with zero obligation.
+                      <h4 className="text-sm font-semibold text-forest">Bespoke Treatment Pathway</h4>
+                      <p className="mt-0.5 text-xs leading-relaxed text-ink">
+                        You receive a clear, personalized recommendation and home protocol with zero obligation.
+                      </p>
                     </div>
-                  </li>
-                </ul>
+                  </div>
+                </div>
               </div>
 
               {/* Clinic Contact & Hours Card */}
-              <div className="rounded-3xl border border-emerald/10 bg-sage-pale/40 p-7">
-                <span className="text-xs font-semibold uppercase tracking-wider text-gold-dark">Our Location</span>
-                <h3 className="mt-2 font-serif text-xl font-medium text-forest">Clinic Information</h3>
+              <div className="rounded-[2rem] border border-forest/[0.08] bg-sage-pale/40 p-7 backdrop-blur-sm">
+                <span className="text-xs font-semibold uppercase tracking-[0.16em] text-forest/70">Our Practice</span>
+                <h3 className="mt-2 font-serif text-xl font-medium text-forest">Clinic Concierge</h3>
 
-                <div className="mt-5 space-y-3.5 text-sm text-ink/80">
+                <div className="mt-5 space-y-3.5 text-sm text-ink">
                   <div className="flex items-start gap-3">
                     <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-emerald" />
                     <span>{brand.contact.address}</span>
@@ -497,29 +559,78 @@ export default function BookConsultationPage() {
                   </div>
                 </div>
 
-                <div className="mt-6 border-t border-emerald/10 pt-5">
+                <div className="mt-6 flex items-center justify-between border-t border-forest/10 pt-5 text-xs">
+                  <span className="flex items-center gap-1.5 text-emerald font-medium">
+                    <span className="h-2 w-2 rounded-full bg-emerald animate-pulse" />
+                    Concierge replies within 2 hrs
+                  </span>
                   <Link
                     to="/treatments"
-                    className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-emerald transition hover:text-forest"
+                    className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-forest/80 hover:text-emerald transition"
                   >
-                    <ArrowLeft className="h-3.5 w-3.5" /> Back to Treatments Overview
+                    Treatments <ChevronRight className="h-3.5 w-3.5" />
                   </Link>
                 </div>
               </div>
 
               {/* Trust statement */}
-              <div className="rounded-2xl border border-gold/30 bg-gold-light/10 p-5 text-xs text-forest/80">
-                <p className="font-semibold text-gold-dark">Clinical Confidentiality</p>
-                <p className="mt-1 leading-relaxed">
-                  Your personal skin details and treatment aspirations are held in strict clinical confidentiality. We do not share your information with external parties.
+              <div className="flex items-start gap-3 rounded-2xl border border-gold/30 bg-gold-light/10 p-5 text-xs text-forest/85">
+                <ShieldCheck className="h-5 w-5 shrink-0 text-gold-dark mt-0.5" />
+                <div>
+                  <p className="font-semibold text-gold-dark">Strict Clinical Confidentiality</p>
+                  <p className="mt-1 leading-relaxed text-forest/80">
+                    Your personal skin details and treatment aspirations are held in strict clinical confidentiality. We do not share your information with external parties.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          {/* Bottom Consultation FAQs Section - Eliminates dead space & builds trust */}
+          <div className="mt-20 sm:mt-28 border-t border-forest/[0.08] pt-14 sm:pt-18">
+            <div className="max-w-xl mb-8 sm:mb-10">
+              <Eyebrow tone="gold">Pre-Visit Guidance</Eyebrow>
+              <h3 className="mt-3 font-serif text-2xl sm:text-3xl font-medium text-forest">
+                Frequently Asked Consultation Questions
+              </h3>
+            </div>
+
+            <div className="grid gap-6 sm:grid-cols-3">
+              <div className="rounded-[1.75rem] border border-forest/[0.07] bg-white/75 p-6 shadow-sm backdrop-blur-sm">
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-forest/[0.05] text-forest mb-4">
+                  <User className="h-4 w-4" />
+                </span>
+                <h4 className="font-serif text-lg font-medium text-forest">How should I prepare?</h4>
+                <p className="mt-2 text-xs sm:text-sm text-ink leading-relaxed font-light">
+                  Arrive with your normal daily skincare applied. Clean skin or minimal makeup allows our specialists to accurately evaluate natural moisture, barrier condition, and texture.
+                </p>
+              </div>
+
+              <div className="rounded-[1.75rem] border border-forest/[0.07] bg-white/75 p-6 shadow-sm backdrop-blur-sm">
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-forest/[0.05] text-forest mb-4">
+                  <HeartHandshake className="h-4 w-4" />
+                </span>
+                <h4 className="font-serif text-lg font-medium text-forest">Will I be pressured to buy?</h4>
+                <p className="mt-2 text-xs sm:text-sm text-ink leading-relaxed font-light">
+                  Never. Our consultations are strictly diagnostic and educational. You will receive a bespoke treatment pathway to take home and consider at your own rhythm without obligation.
+                </p>
+              </div>
+
+              <div className="rounded-[1.75rem] border border-forest/[0.07] bg-white/75 p-6 shadow-sm backdrop-blur-sm">
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-forest/[0.05] text-forest mb-4">
+                  <Sparkles className="h-4 w-4" />
+                </span>
+                <h4 className="font-serif text-lg font-medium text-forest">Can I treat on the same day?</h4>
+                <p className="mt-2 text-xs sm:text-sm text-ink leading-relaxed font-light">
+                  Depending on clinic schedule and skin readiness, select gentle non-invasive protocols can be initiated immediately after your consultation if you wish.
                 </p>
               </div>
             </div>
-
           </div>
         </Container>
       </section>
     </div>
   );
 }
-
